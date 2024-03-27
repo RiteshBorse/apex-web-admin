@@ -83,6 +83,41 @@ export async function readApartmentDetails(apartmentId){
     }
 }
 
+export async function totalApartmentCount()
+{
+    const db = getDatabase();
+    const dbRef = ref(db);
+    get(child(dbRef, "society"))
+        .then((snapshot) => {
+            let counter = 0;
+            snapshot.forEach(element => {
+                counter++;
+            })
+            console.log(counter);
+        });
+}
+
+export async function sortByCountry(a)
+{
+    const db = getDatabase();
+    const dbRef = ref(db);
+    const snapshot = await get(child(dbRef, "society"));
+    
+    let counter = 0;
+    snapshot.forEach((element) => {
+        let societyID = element.val().specialID.apartmentId;
+        if(societyID.charAt(0) == a.toUpperCase())
+        {
+            counter++;
+        }
+
+    });
+    console.log(counter)
+    
+    
+}
+
+
 
 
 
