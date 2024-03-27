@@ -62,14 +62,27 @@ export async function readAllData() {
             }
             document.querySelectorAll(`.js-card`)
                 .forEach((card) => {
-                    card.addEventListener('click', () => {
-                        window.location.href = 'apartment-details.html';
+                    card.addEventListener('click', async () => {
                         const apartmentId = card.dataset.apartId;
+                        const data = await readApartmentDetails(apartmentId);
+                        localStorage.setItem("apartment-data", JSON.stringify(data));
+                        window.location.href = 'apartment-details.html';
+                        });
                     });
                 });
             
-        })
+        }
+export async function readApartmentDetails(apartmentId){
+    const db = getDatabase();
+    const dbRef = ref(db);
+    const snapshot = await get(child(dbRef, `society/${apartmentId}/apartmentInfo`))
+    if(snapshot.exists())
+    {
+        const element = snapshot.val();
+        return element;
+    }
 }
+
 
 
 
