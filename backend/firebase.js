@@ -63,6 +63,7 @@ export async function readAllData() {
             document.querySelectorAll(`.js-card`)
                 .forEach((card) => {
                     card.addEventListener('click', () => {
+                        window.location.href = 'apartment-details.html';
                         const apartmentId = card.dataset.apartId;
                     });
                 });

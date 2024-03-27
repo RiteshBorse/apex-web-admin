@@ -1,21 +1,24 @@
-*{
-    padding: 0;
-    margin: 0;
-}
-.emergency{
-    display: none;
-    background-color: red;
-}
 .main{
     display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;  
     align-items: center;
     justify-content: center;
-    height : 100vh;
-    background-color: aliceblue;
+
 }
-.apart{
-    background-color: beige;
-    padding: 100px;
-    display: flex;
-    box-shadow: 20px;
+
+.card {
+    width: 800px;
+    height: 600px;
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe,
+                  -20px -20px 60px #ffffff;
+   }
+
+.main h1{
+    z-index: 1;
+    padding-left: 10px;
+    font-weight: 600;
 }
