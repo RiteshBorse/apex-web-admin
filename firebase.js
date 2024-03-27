@@ -23,10 +23,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-export async function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 export async function writeUserData(username, newUser) {
     await set(ref(db, 'users/' + username), newUser);
 };
@@ -45,41 +41,36 @@ export async function readdata(name) {
     }
 };
 
-const db = getDatabase();
-export let allData = '';
-let agg = 0;
+
+let allData = '';
 export async function readAllData() {
     const db = getDatabase();
     const dbRef = ref(db);
-    get(child(dbRef, "users/"))
+    get(child(dbRef, "society/"))
         .then((snapshot) => {
             snapshot.forEach(element => {
-                allData += `
-          <div class="box">   
-    <p><span>Apartment Name:</span> ${element.val().apartmentName}</p>
-    <p><span>First Name:</span> ${element.val().firstName}</p>
-    <p><span>Middle Name:</span> ${element.val().middleName}</p>
-    <p><span>Surname:</span> ${element.val().surName}</p>
-    <p><span>Street:</span> ${element.val().street}</p>
-    <p><span>Pincode:</span> ${element.val().pincode}</p>
-    <p><span>Country:</span> ${element.val().country}</p>
-    <p><span>State:</span> ${element.val().state}</p>
-    <p><span>District:</span> ${element.val().district}</p>
-    <p><span>Number of Flats:</span> ${element.val().flats}</p>
-    <p><span>Number of Residents:</span> ${element.val().residents}</p>
-    <p><span>Number of Shops:</span> ${element.val().shops}</p>
-    <p><span>User Name:</span> ${element.val().username}</p>
-    <p><span>Password:</span> ${element.val().password}</p>
-</div>
-
-            `
+                allData +=
+                    `
+                <div class="card js-card" data-apart-id=${element.val().specialID.apartmentId}>
+                    <img src="image.png" alt="">
+                    ${element.val().specialID.apartmentId}
+                </div>
+                `
             });
-
-
-
-            document.querySelector('.js-content').innerHTML = allData;
+            if (allData) {
+                document.querySelector('.js-features').innerHTML = allData;
+            }
+            document.querySelectorAll(`.js-card`)
+                .forEach((card) => {
+                    card.addEventListener('click', () => {
+                        const apartmentId = card.dataset.apartId;
+                    });
+                });
+            
         })
 }
+
+
 
 
 
