@@ -52,7 +52,7 @@ export async function readAllData() {
                 allData +=
                     `
                 <div class="card js-card" data-apart-id=${element.val().specialID.apartmentId}>
-                    <img src="image.png" alt="">
+                    <img src="apartment-pural.png" alt="">
                     ${element.val().specialID.apartmentId}
                 </div>
                 `
