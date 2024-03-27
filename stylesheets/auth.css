@@ -1,4 +1,5 @@
 .auth-card{
+    z-index: 1;
     height: 50%;
     width: 50%;
     display: flex;
