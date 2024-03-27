@@ -30,6 +30,7 @@
     text-align: center;
     align-items: center;
     justify-content: flex-start;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .top img {
@@ -59,6 +60,7 @@
     text-align: center;
     align-items: center;
     justify-content: flex-start;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .middle-components img {
@@ -83,6 +85,7 @@
     align-items: center;
     justify-content: flex-start;
     margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .bottom img{
