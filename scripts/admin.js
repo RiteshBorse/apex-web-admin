@@ -1,6 +1,7 @@
 import { readAllData } from "../backend/firebase.js";
 import { admin } from "./data.js";
 
+if(sessionStorage.getItem('User') == null){
 document.querySelector('.js-login-button')
     .addEventListener(('click'), () => {
         const EadminId = document.querySelector('.js-admin-id').value;
@@ -8,6 +9,7 @@ document.querySelector('.js-login-button')
         if (admin.adminId === EadminId && admin.password === Epassword) {
                 console.log('Login Succes');
                 document.querySelector('.js-auth-card').remove();
+                sessionStorage.setItem('User' , EadminId);
                 readAllData();
             }
             else{
@@ -18,7 +20,11 @@ document.querySelector('.js-login-button')
                 }, 500);
             }
     });
-
+}
+else{
+    document.querySelector('.js-auth-card').remove();
+    readAllData();
+}
    
 
 
